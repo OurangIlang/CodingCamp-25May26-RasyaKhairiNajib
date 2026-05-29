@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense &amp; Budget Visualizer</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <h1>Expense &amp; Budget Visualizer</h1>
+
+    <!-- Balance Display Card -->
+    <div class="card" id="balance-card">
+      <p class="balance-label">TOTAL BALANCE</p>
+      <div id="balance-display">$0.00</div>
+    </div>
+
+    <!-- Storage Error Banner -->
+    <div id="storage-error" role="alert" hidden>
+      Unable to save data. Your storage may be full or restricted.
+    </div>
+
+    <!-- Input Form Card -->
+    <section class="card">
+      <h2>Add Transaction</h2>
+      <form id="transaction-form" novalidate>
+        <div class="form-group">
+          <label for="input-name">Item Name</label>
+          <input
+            type="text"
+            id="input-name"
+            name="name"
+            maxlength="100"
+            placeholder="e.g. Lunch"
+            autocomplete="off"
+          />
+          <span class="error" id="error-name" role="alert"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="input-amount">Amount</label>
+          <input
+            type="number"
+            id="input-amount"
+            name="amount"
+            min="0.01"
+            max="999999999.99"
+            step="0.01"
+            placeholder="e.g. 12.50"
+          />
+          <span class="error" id="error-amount" role="alert"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="input-category">Category</label>
+          <select id="input-category" name="category">
+            <option value="Food">Food</option>
+            <option value="Transport">Transport</option>
+            <option value="Fun">Fun</option>
+          </select>
+          <span class="error" id="error-category" role="alert"></span>
+        </div>
+
+        <button type="submit" class="btn-submit">Add Transaction</button>
+      </form>
+    </section>
+
+    <!-- Bottom Two-Column Row -->
+    <div class="bottom-row">
+      <!-- Transactions Card -->
+      <section class="card" id="transactions-card">
+        <h2>Transactions</h2>
+        <ul id="transaction-list"></ul>
+      </section>
+
+      <!-- Spending by Category Card -->
+      <section class="card" id="chart-card">
+        <h2>Spending by Category</h2>
+        <canvas id="pie-chart"></canvas>
+        <p id="chart-empty" hidden>No spending data available.</p>
+      </section>
+    </div>
+
+    <script src="js/app.js" type="module"></script>
+  </body>
+</html>

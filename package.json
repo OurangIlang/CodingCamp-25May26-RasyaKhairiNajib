@@ -1,0 +1,11 @@
+{
+  "name": "expense-tracker",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "vitest": "2.1.8",
+    "fast-check": "3.22.0"
+  }
+}
